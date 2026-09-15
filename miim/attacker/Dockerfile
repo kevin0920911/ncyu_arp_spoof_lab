@@ -4,7 +4,8 @@ RUN apt-get update && \
     apt-get install -y \
     iproute2 \
     iputils-ping \
-    tcpdump && \
+    tcpdump  \
+    vim \
     net-tools && \
     rm -rf /var/lib/apt/lists/*
 
