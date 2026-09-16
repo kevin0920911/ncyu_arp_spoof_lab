@@ -8,7 +8,7 @@ services:
       - NET_RAW
     networks:
       lab:
-        ipv4_address: 10.10.0.10
+        ipv4_address: 10.20.0.10
         mac_address: 00:00:00:00:00:10
     command: ["sleep", "infinity"]
 
@@ -19,7 +19,7 @@ services:
       - NET_ADMIN
     networks:
       lab:
-        ipv4_address: 10.10.0.20
+        ipv4_address: 10.20.0.20
         mac_address: 00:00:00:00:00:20
  
   server:
@@ -27,7 +27,7 @@ services:
     container_name: mitm-flag-server
     networks:
       lab:
-        ipv4_address: 10.10.0.30
+        ipv4_address: 10.20.0.30
         mac_address: 00:00:00:00:00:30
 
   gateway:
@@ -37,7 +37,7 @@ services:
       - NET_ADMIN
     networks:
       lab:
-        ipv4_address: 10.10.0.1
+        ipv4_address: 10.20.0.1
         mac_address: 00:00:00:00:00:01
 
 networks:
@@ -45,4 +45,4 @@ networks:
     driver: bridge
     ipam:
       config:
-        - subnet: 10.10.0.0/24
+        - subnet: 10.20.0.0/24

